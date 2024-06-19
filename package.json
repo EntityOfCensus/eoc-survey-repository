@@ -11,7 +11,8 @@
 	"dependencies": {
 		"@cloudflare/itty-router-openapi": "^1.0.1",
 		"@prisma/client": "^5.15.1",
-		"@prisma/extension-accelerate": "^1.1.0"
+		"@prisma/extension-accelerate": "^1.1.0",
+		"jwt-claims": "^1.0.1"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20240529.0",

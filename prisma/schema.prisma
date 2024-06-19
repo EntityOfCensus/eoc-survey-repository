@@ -18,6 +18,7 @@ datasource db {
 
 model ClientSurveyRef {
   surveyId String @id
+  othentId String 
   state String
 
   @@schema("survey_repository")
