@@ -9,12 +9,15 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
-		"@cloudflare/itty-router-openapi": "^1.0.1"
+		"@cloudflare/itty-router-openapi": "^1.0.1",
+		"@prisma/client": "^5.15.1",
+		"@prisma/extension-accelerate": "^1.1.0"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20240529.0",
 		"@types/node": "^20.5.7",
 		"@types/service-worker-mock": "^2.0.1",
+		"prisma": "^5.15.1",
 		"wrangler": "^3.0.0"
 	}
 }

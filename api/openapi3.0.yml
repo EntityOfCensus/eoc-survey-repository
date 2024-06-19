@@ -1,0 +1,127 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Client Survey Repository API
+  description: Client Survey Repository API
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: API Team
+    email: apiteam@eoc.io
+    url: http://eoc.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://eoc-client-basic-info.infra-workers.workers.dev/
+  - url: http://localhost:8787
+paths:
+  /suvery:
+    post:
+      tags:
+        - SurveyRepository
+      summary: Creates a new RespondentProfileSurveyIndex in the store.  Duplicates are not allowed
+      description: Creates a new RespondentProfileSurveyIndex in the store.  Duplicates are not allowed
+      operationId: addRespondentProfileSurveyIndex
+      requestBody:
+        description: RespondentProfileSurveyIndex to add to the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Survey'
+      responses:
+        '200':
+          description: RespondentProfileSurveyIndex response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /suvery/{id}:
+    get:
+      tags:
+        - SurveyRepository
+      summary: Returns a RespondentProfileSurveyIndex based on a single ID
+      description: Returns a RespondentProfileSurveyIndex based on a single ID
+      operationId: findRespondentProfileSurveyIndexById
+      parameters:
+        - name: id
+          in: path
+          description: ID of RespondentProfileSurveyIndex to fetch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: RespondentProfileSurveyIndex response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - SurveyRepository
+      summary: Update RespondentProfileSurveyIndex in the store based on a single ID
+      description: Update RespondentProfileSurveyIndex in the store based on a single ID
+      operationId: updateRespondentProfileSurveyIndex
+      parameters:
+        - name: id
+          in: path
+          description: ID of RespondentProfileSurveyIndex to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: RespondentProfileSurveyIndex to update to the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Survey'
+      responses:
+        '200':
+          description: RespondentProfileSurveyIndex response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+  schemas:
+    Survey:
+      type: object
+      properties:
+        surveyId:
+          type: string
+        state:
+          type: string
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+security:
+  - bearerAuth: [] 
