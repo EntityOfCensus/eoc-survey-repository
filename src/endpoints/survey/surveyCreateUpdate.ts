@@ -48,10 +48,12 @@ export class SurveyCreateUpdate extends OpenAPIRoute {
 			where: { surveyId: data.body.surveyId },
 			update: {
 			  'state': data.body.state,
+			  'name': data.body.name
 			},
 			create: {
 			  'surveyId': data.body.surveyId,
 			  'othentId': request.claims.sub,
+			  'name': data.body.name,
 			  'state': data.body.state,
 			}      
 		  });

@@ -11,4 +11,5 @@ export const Task = {
 export const Survey = {
 	surveyId: String,
 	state: String,	
+	name: String
 }
