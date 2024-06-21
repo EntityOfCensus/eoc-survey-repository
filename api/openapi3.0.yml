@@ -139,6 +139,8 @@ components:
       properties:
         surveyId:
           type: string
+        name:
+          type: string
         state:
           type: string
     Error:
